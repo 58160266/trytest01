@@ -24,6 +24,12 @@ describe('Tennis App', () => {
   describe('When player A gets score', () => {
     let app
 
+    function repeatPlayerAGetScore(number){
+      for(let i = 0 ;i<number;i++){
+        app.playerAGetScore()
+      }
+    }
+
     beforeEach(() => {
       app = new TennisApp()
       app.reset()
@@ -31,12 +37,11 @@ describe('Tennis App', () => {
 
     it('should echo "Love - Love" when game starts', () => {
       let result = app.echo()
-
       expect(result).toBe('Love - Love')
     })
 
-    it('should echo "Fifteen - Love" when score is 15-0', () => {
-      app.playerAGetScore()
+    it.only('should echo "Fifteen - Love" when score is 15-0', () => {
+      repeatPlayerAGetScore(1)
       let result = app.echo()
 
       expect(result).toBe('Fifteen - Love')
